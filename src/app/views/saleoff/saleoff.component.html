@@ -1,0 +1,79 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <!--/.col-->
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <h4>Khuyến mại <span type="button" class="btn btn-success" style="float: right;">Thêm mới</span></h4>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>HÌNH ẢNH</th>
+                <th>TÊN</th>
+                <th>MỚI</th>
+                <th>HOT</th>
+                <th>ĐIỂM</th>
+                <th>TRẠNG THÁI</th>
+                <th>TÁC VỤ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src="../../../assets/img/brand/hachinet.png" alt="" width="100px"></td>
+                <td>[MIỀN BẮC] Ơ MÂY ZING GÚT CHÓP <br> ĂN LẨU GIÁ CỰC HOT </td>
+                <td>
+                  <span class="badge badge-info">Mới</span>
+                </td>
+                <td>
+                  <span class="badge badge-secondary">Hot</span>
+                </td>
+                <td>0</td>
+                <td>
+                  <span class="badge badge-success">Kích hoạt</span>
+                </td>
+                <td>
+                  <i class="fas fa-edit edit-btn"></i>
+                  <i class="fas fa-trash-alt delete-btn"></i>
+                </td>
+              </tr>
+              <tr *ngFor="let i of listItem | paginate : {
+                itemsPerPage: tableSize,
+                currentPage: page,
+                totalItems: count
+              };">
+                <td><img src={{i.images}} alt="" width="100px"></td>
+                <td width="265px"> {{i.name}} </td>
+                <td>
+                  <span class="badge badge-info" *ngIf="i.new">Mới</span>
+                </td>
+                <td>
+                  <span class="badge badge-secondary" *ngIf="i.hot">Hot</span>
+                </td>
+                <td>{{i.scores}}</td>
+                <td>
+                  <span class="badge badge-success" *ngIf="i.status">Kích hoạt</span>
+                </td>
+                <td>
+                  <i class="fas fa-edit edit-btn"></i>
+                  <i class="fas fa-trash-alt delete-btn"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="d-flex justify-content-center">
+            <pagination-controls
+              responsive="true"
+              previousLabel="Prev"
+              nextLabel="Next"
+              (pageChange)="onTableDataChange($event)">
+            </pagination-controls>
+          </div>
+
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+</div>
